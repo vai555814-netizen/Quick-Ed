@@ -9,19 +9,7 @@ TELEGRAM_CHANNEL = os.environ.get("TELEGRAM_CHANNEL_USERNAME")
 genai.configure(api_key=GEMINI_API_KEY)
 def generate_update():
     prompt = "You are an expert Indian education and exam news analyst. Generate a fresh, high-priority, factual educational update relevant to Indian students. Format in Inshorts style: under 60 words, catchy headline with emojis, key facts (Eligibility, Dates), no clutter."
-    
-    # Yeh code apne aap check kar lega ki teri key par kaun sa model chal raha hai
-    model_name = ('gemini-3.8-flash')
-    try:
-        for m in genai.list_models():
-            if 'generateContent' in m.supported_generation_methods:
-                model_name = m.name
-                break
-    except Exception as e:
-        print("Model fetch error, using default:", e)
-        
-    print("Using Model:", model_name)
-    model = genai.GenerativeModel(model_name)
+    model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content(prompt)
     return response.text
 def send_to_telegram(text):
