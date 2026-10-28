@@ -24,7 +24,7 @@ def generate_update():
     model = genai.GenerativeModel(model_name)
     response = model.generate_content(prompt)
     return response.text
-    def send_to_telegram(text):
+def send_to_telegram(text):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHANNEL, "text": text, "parse_mode": "Markdown"}
     response = requests.post(url, json=payload)
