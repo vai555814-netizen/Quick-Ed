@@ -10,7 +10,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 def generate_update():
     prompt = """You are an expert Indian education and exam news analyst. Generate a fresh, high-priority, factual educational update relevant to Indian students. Format in Inshorts style: under 60 words, catchy headline with emojis, key facts (Eligibility, Dates), no clutter."""
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-1.0-pro')
     response = model.generate_content(prompt)
     return response.text
 def send_to_telegram(text):
