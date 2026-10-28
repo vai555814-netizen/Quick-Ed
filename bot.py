@@ -26,4 +26,8 @@ def send_to_telegram(text):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHANNEL, "text": text, "parse_mode": "Markdown"}
     response = requests.post(url, json=payload)
-    print("Telegram Response:", response.text
+    print("Telegram Response:", response.text)
+if __name__ == "__main__":
+    update_text = generate_update()
+    if update_text:
+        send_to_telegram(update_text)
