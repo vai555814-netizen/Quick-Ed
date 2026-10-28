@@ -13,7 +13,7 @@ def generate_update():
     model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(prompt)
     return response.text
-  def send_to_telegram(text):
+def send_to_telegram(text):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHANNEL, "text": text, "parse_mode": "Markdown"}
     requests.post(url, json=payload)
