@@ -20,12 +20,12 @@ def generate_update():
     response = model.generate_content(prompt)
     text = response.text.strip()
     if "NO_UPDATE" in text or len(text) < 10: return None
-    return text
+       return text
 def send_to_telegram(text):
     if not text: return
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHANNEL, "text": text, "parse_mode": "Markdown"}
     requests.post(url, json=payload)
     if __name__ == "__main__":
-    update_text = generate_update()
+      update_text = generate_update()
     if update_text: send_to_telegram(update_text)
