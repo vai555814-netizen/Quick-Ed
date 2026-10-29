@@ -30,5 +30,5 @@ def send_to_telegram(text):
     requests.post(url, json=payload)
     if __name__ == "__main__":
        update_text = generate_update()
-        if update_text:
+       if update_text:
            send_to_telegram(update_text)
