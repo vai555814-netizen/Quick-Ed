@@ -19,8 +19,9 @@ def generate_update():
     model = genai.GenerativeModel('gemini-3.8-flash')
     response = model.generate_content(prompt)
     text = response.text.strip()
-    if "NO_UPDATE" in text or len(text) < 10: return None
-       return text
+    if "NO_UPDATE" in text or len(text) < 10:
+        return None
+    return text
 def send_to_telegram(text):
     if not text: 
        return
